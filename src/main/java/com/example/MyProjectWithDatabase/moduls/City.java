@@ -1,0 +1,49 @@
+package com.example.MyProjectWithDatabase.moduls;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "CITY")
+public class City {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private long id;
+    @Column(name = "CNAME")
+    private String name;
+    @Column(name = "POPULATION")
+    private int population;
+
+    public City() {
+    }
+
+    public City(String name, int population) {
+        this.name = name;
+        this.population = population;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
+    }
+
+}
