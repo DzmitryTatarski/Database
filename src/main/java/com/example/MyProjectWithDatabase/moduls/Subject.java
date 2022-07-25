@@ -1,26 +1,33 @@
 package com.example.MyProjectWithDatabase.moduls;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+
+import java.sql.Time;
+import java.util.Date;
 
 @Entity
 @Table(name = "SUBJECT")
 public class Subject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "SNAME")
     private String name;
     @Column(name = "DURATION")
-    private String duration;
+    @Temporal(TemporalType.TIME)
+    @DateTimeFormat(pattern = "HH:mm")
+    private Date duration;
 
-    @OneToOne(mappedBy = "idSubject", cascade = CascadeType.ALL)
-    private Teacher idTeacher;
+//    @OneToOne(mappedBy = "idSubject", cascade = CascadeType.ALL)
+//    private Teacher idTeacher;
 
     public Subject() {
     }
 
-    public Subject(String name, String duration) {
+    public Subject(String name, Date duration) {
         this.name = name;
         this.duration = duration;
     }
@@ -41,19 +48,19 @@ public class Subject {
         this.name = name;
     }
 
-    public String getDuration() {
+    public Date getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(Date duration) {
         this.duration = duration;
     }
 
-    public Teacher getIdTeacher() {
-        return idTeacher;
-    }
-
-    public void setIdTeacher(Teacher idTeacher) {
-        this.idTeacher = idTeacher;
-    }
+//    public Teacher getIdTeacher() {
+//        return idTeacher;
+//    }
+//
+//    public void setIdTeacher(Teacher idTeacher) {
+//        this.idTeacher = idTeacher;
+//    }
 }

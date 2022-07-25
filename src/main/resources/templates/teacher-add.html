@@ -9,13 +9,14 @@
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
     <h1>Add teacher</h1>
-    <form action="/student/add" method="post">
+    <form action="/teacher/add" method="post">
         <input type="text" name="firstName" placeholder="First name" class="form-control"><br>
         <input type="text" name="lastName" placeholder="Last name" class="form-control"><br>
+        <input type="number" name="phone" placeholder="Mobile phone" class="form-control"><br>
         <input type="text" name="subject" placeholder="Subject" class="form-control"><br>
         <input type="text" name="university" placeholder="University name" class="form-control"><br>
-        <button type="submit" class="btn btn-success">Add the student</button>
-        <a href="/home">Go to home</a><br>
+        <button type="submit" class="btn btn-success">Add the teacher</button>
+        <a href="/">Go to home</a><br>
         <!--
         имя студента
         фамилия студента

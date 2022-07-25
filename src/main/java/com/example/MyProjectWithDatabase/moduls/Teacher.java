@@ -7,26 +7,27 @@ import javax.persistence.*;
 public class Teacher {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "FIRST_NAME")
     private String firstName;
     @Column(name = "LAST_NAME")
     private String lastName;
     @Column(name = "PHONE")
-    private String phone;
+    private int phone;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_SUBJECT")
-    private Subject idSubject;
+    private Subject subject;
 
     public Teacher() {
     }
 
-    public Teacher(String firstName, String lastName, String phone) {
+    public Teacher(String firstName, String lastName, int phone,Subject subject) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
+        this.subject = subject;
     }
 
     public long getId() {
@@ -53,19 +54,19 @@ public class Teacher {
         this.lastName = lastName;
     }
 
-    public String getPhone() {
+    public int getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
 
-    public Subject getIdSubject() {
-        return idSubject;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setIdSubject(Subject idSubject) {
-        this.idSubject = idSubject;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 }

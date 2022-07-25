@@ -1,9 +1,6 @@
 package com.example.MyProjectWithDatabase.control;
 
-import com.example.MyProjectWithDatabase.control.repo.CityRepo;
-import com.example.MyProjectWithDatabase.control.repo.GroupRepo;
-import com.example.MyProjectWithDatabase.control.repo.StudentRepo;
-import com.example.MyProjectWithDatabase.control.repo.UniversityRepo;
+import com.example.MyProjectWithDatabase.control.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +19,10 @@ public class MainController {
     StudentRepo studentRepo;
     @Autowired
     UniversityRepo universityRepo;
+    @Autowired
+    SubjectRepo subjectRepo;
+    @Autowired
+    TeacherRepo teacherRepo;
 
     @GetMapping("/")
     public String home(Model model){
@@ -30,6 +31,8 @@ public class MainController {
 
     @PostMapping("/")
     public String deleteAll(Model model){
+        teacherRepo.deleteAll();
+        subjectRepo.deleteAll();
         studentRepo.deleteAll();
         groupRepo.deleteAll();
         universityRepo.deleteAll();
